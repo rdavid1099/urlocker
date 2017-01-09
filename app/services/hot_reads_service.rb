@@ -1,0 +1,3 @@
+class HotReadsService
+
+end
