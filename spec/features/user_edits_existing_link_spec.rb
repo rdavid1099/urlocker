@@ -9,7 +9,7 @@ describe 'edit links', :js => :true do
       orig_link = create_link(user)
 
       visit '/'
-      click_on 'Edit'
+      within('.link_buttons') {click_link 'Edit'}
       fill_in 'link_url', with: 'http://new.com'
       fill_in 'link_title', with: 'NEW'
       click_on 'Update Link'
@@ -17,6 +17,7 @@ describe 'edit links', :js => :true do
       within('#links-list') do
         expect(page).to have_content('NEW')
         expect(page).to have_content('http://new.com')
+        expect(page).to have_content('Link Successfully Updated')
         expect(page).to_not have_content(orig_link.url)
         expect(page).to_not have_content(orig_link.title)
       end
