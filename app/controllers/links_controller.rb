@@ -3,4 +3,12 @@ class LinksController < ApplicationController
     @hot_links = Link.hot
     @user_links = current_user.links if logged_in?
   end
+
+  def edit
+    @link = Link.find(params[:id])
+  end
+
+  def update
+
+  end
 end
