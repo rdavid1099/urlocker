@@ -33,6 +33,32 @@ describe 'create links', :js => :true do
         expect(page).to_not have_content('Turing')
       end
     end
+
+    it 'does not enter title for link and is rejected' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit '/'
+      fill_in 'URL:', with: 'http://turing.io'
+      click_on 'Add Link'
+
+      expect(page).to have_content("Title can't be blank")
+      within('#links-list') do
+        expect(page).to_not have_content('Turing')
+      end
+    end
+
+    it 'does not enter url for link and is rejected' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit '/'
+      fill_in 'Title:', with: 'Turing'
+      click_on 'Add Link'
+
+      expect(page).to have_content("Url can't be blank")
+      within('#links-list') do
+        expect(page).to_not have_content('Turing')
+      end
+    end
   end
 
   context 'Unauthenticated user can NOT create a new link' do

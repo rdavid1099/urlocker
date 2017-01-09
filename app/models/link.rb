@@ -7,6 +7,7 @@ class Link < ApplicationRecord
       .order('count("reads".id) DESC').limit(10)
   }
   validates :title, presence: true
+  validates :url, presence: true
   validate :proper_url
 
   def proper_url
