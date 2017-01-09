@@ -1,12 +1,6 @@
-<form id="new-link">
-  <label>URL:
-    <input id="link-url">
-  </label>
-  <label>Title:
-    <input id="link-title">
-  </label>
-  <input type="submit" value="Add Link">
-</form>
+<% if logged_in? %>
+  <%= render partial: 'link_form' %>
+<% end %>
 
 <div id="links-list"></div>
 

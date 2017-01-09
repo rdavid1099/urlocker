@@ -6,4 +6,12 @@ class Link < ApplicationRecord
       .group("links.url")
       .order('count("reads".id) DESC').limit(10)
   }
+  validates :title, presence: true
+  validate :proper_url
+
+  def proper_url
+    unless self.url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]
+      self.errors[:url] << 'Invalid URL. Please enter a valid web address.'
+    end
+  end
 end

@@ -10,7 +10,7 @@ $(document).ready(function(){
 function createLink (event){
   event.preventDefault();
 
-  console.log("win")
+  clearFlash()
 
   var link = getLinkData();
 
@@ -28,7 +28,7 @@ function getLinkData() {
 
 function renderLink(link){
   $("#links-list").append( linkHTML(link) )
-  // clearLink();
+  clearLink();
 }
 
 function linkHTML(link) {
@@ -38,7 +38,7 @@ function linkHTML(link) {
               <p class='link-url'>${ link.url }</p>
 
               <p class="link_read">
-                ${ link.read }
+                Read? ${ link.read }
               </p>
               <p class="link_buttons">
                 <button class="mark-read">Mark as Read</button>
@@ -54,5 +54,15 @@ function clearLink() {
 }
 
 function displayFailure(failureData){
-  console.log("FAILED attempt to create new Link: " + failureData.responseText);
+  $('#link-flash').append( flashError(failureData.responseText) )
+}
+
+function flashError(failureData) {
+  return `<div class='alert alert-error'>
+            ${failureData}
+          </div>`
+}
+
+function clearFlash () {
+  $('#link-flash').text('')
 }
