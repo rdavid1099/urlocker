@@ -40,3 +40,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'poltergeist'
 end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
+end
