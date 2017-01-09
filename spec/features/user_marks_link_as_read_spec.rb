@@ -12,7 +12,7 @@ describe 'reads link', :js => :true do
     it 'removes link from the list and database' do
       visit '/'
 
-      within('.link_buttons') {click_link 'Mark as Read'}
+      within('.link_buttons') {click_on 'Mark as Read'}
       expect(Read.count).to eq(1)
     end
   end
