@@ -59,7 +59,7 @@ def create_user
   )
 end
 
-def create_link(user)
+def create_link(user = create_user)
   user.links.create(
     url: 'http://test.com',
     title: 'test'

@@ -17,6 +17,7 @@ gem 'awesome_print'
 gem 'bcrypt', '~> 3.1.7'
 gem 'react-rails'
 gem 'sprockets-es6'
+gem 'faraday'
 
 # gem 'unicorn'
 

@@ -14,7 +14,7 @@ class Api::V1::LinksController < ApplicationController
     @link.assign_attributes link_params
     just_read = @link.read_changed? && @link.read
     if @link.save
-      Read.create(link: @link) if just_read
+      HotReadsService.record_read(@link) if just_read
       head :no_content
     else
       render json: @link.errors.full_messages, status: 500
