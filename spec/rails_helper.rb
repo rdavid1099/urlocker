@@ -58,3 +58,10 @@ def create_user
     password_confirmation: 'password'
   )
 end
+
+def create_link(user)
+  user.links.create(
+    url: 'http://test.com',
+    title: 'test'
+  )
+end

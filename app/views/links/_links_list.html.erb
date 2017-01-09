@@ -10,8 +10,8 @@
       </p>
       <p class="link_buttons">
         <button class="mark-read">Mark as Read</button>
-        <button class='edit-link'>Edit</button>
-        <button class='delete-link'>Delete</button>
+        <a href='/links/<%= link.id %>/edit'><button class='edit-link'>Edit</button></a>
+        <a data-confirm='Are you sure you want to delete this link?' data-method='delete' href='/links/<%= link.id %>'><button class='delete-link'>Delete</button></a>
       </p>
     </div>
   <% end %>
