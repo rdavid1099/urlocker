@@ -10,12 +10,10 @@ describe 'reads link', :js => :true do
 
   context 'user clicks mark as read' do
     it 'removes link from the list and database' do
-      VCR.use_cassette 'record read' do
-        visit '/'
+      visit '/'
 
-        within('.link_buttons') {click_link 'Mark as Read'}
-        expect(Read.count).to eq(1)
-      end
+      within('.link_buttons') {click_link 'Mark as Read'}
+      expect(Read.count).to eq(1)
     end
   end
 end

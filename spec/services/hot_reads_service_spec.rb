@@ -5,11 +5,9 @@ describe 'HotReadsService' do
 
   context '#record_read' do
     it 'records read of link' do
-      VCR.use_cassette 'record read' do
-        service.record_read(create_link)
+      service.record_read(create_link)
 
-        expect(Read.count).to eq(1)
-      end
+      expect(Read.count).to eq(1)
     end
   end
 end
