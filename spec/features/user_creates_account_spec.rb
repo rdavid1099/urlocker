@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'User logs in', :js => :true do
+describe 'User logs in' do
   context 'creates account' do
     it 'fills in necessary fields' do
       visit '/'

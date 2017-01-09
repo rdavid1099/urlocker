@@ -1,9 +1,9 @@
 <h1>Login</h1>
 
-<%= form_tag '/login' do %>
+<%= form_for @user, url: {controller: 'sessions', action: 'create'} do |f| %>
 
-  Email: <%= text_field_tag :email %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
+  <%= f.text_field :email, placeholder: 'Email Address' %><br>
+  <%= f.password_field :password, placeholder: 'Password' %><br>
+  <%= f.submit "Login" %>
 
 <% end %>
