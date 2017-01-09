@@ -2,5 +2,4 @@
 
 ## MidModule Assessment
 
-The URLockbox is a starter app for the mid-module assessment for backend engineering module4 at TuringSchool of Software and Design.
-# temp-mid-mod-boilerplate
+The URLockbox is one of two apps created within 8 hours for the Turing School of Software and Design final assessment.
