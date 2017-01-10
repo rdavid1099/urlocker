@@ -10,8 +10,12 @@ $(document).ready(function(){
     showLinks('unread')
   })
 
+  $searchText = $("#filter-search-text");
+  $("#filter-search").on('submit', searchText);
+
+
   function showLinks (filter) {
-    var hey = $.ajax({
+    $.ajax({
       type: 'GET',
       url: '/api/v1/links',
       data: { get_param: 'value' },
@@ -26,6 +30,29 @@ $(document).ready(function(){
           } else if (filter === 'unread') {
             if (link.read === false) {
               renderUnreadLink(link)
+            }
+          }
+        })
+      }
+    });
+  }
+
+  function searchText (event) {
+    event.preventDefault();
+
+    $.ajax({
+      type: 'GET',
+      url: '/api/v1/links',
+      data: { get_param: 'value' },
+      dataType: 'json',
+      success: function (data) {
+        clearLinksList()
+        $.each(data, function (index, link) {
+          if (link.title.includes($searchText.val())) {
+            if (link.read) {
+            renderReadLink(link)
+            } else {
+            renderUnreadLink(link)
             }
           }
         })
