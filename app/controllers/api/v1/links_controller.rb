@@ -1,4 +1,8 @@
 class Api::V1::LinksController < ApplicationController
+  def index
+    @links = current_user.links
+    render json: @links
+  end
 
   def create
     @link = current_user.links.new(link_params)

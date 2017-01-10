@@ -1,4 +1,17 @@
 <h2>Your Submitted Links</h2>
+<div id="filters">
+  <p>
+    FILTERS:
+    <form id="filter-search">
+      <label>Text:
+        <input id="filter-search-text">
+      </label>
+      <input type="submit" value="Search by Text">
+    </form>
+    <button class='filter-read'>Read</button>
+    <button class='filter-unread'>Unread</button>
+  </p>
+</div>
 <div id="links-list">
   <% @user_links.each do |link| %>
     <div class='link <%= link.read? %>' data-id='<%= link.id %>' id="link-<%= link.id %>">
