@@ -11,10 +11,9 @@ class Api::V1::LinksController < ApplicationController
 
   def update
     @link = Link.find(params[:id])
-    @link.assign_attributes link_params
-    just_read = @link.read_changed? && @link.read
-    if @link.save
-      HotReadsService.record_read(@link) if just_read
+    read = params[:read] == 'true' ? true : false
+    if @link.update(read: read)
+      HotReadsService.record_read(@link) if @link.read
       head :no_content
     else
       render json: @link.errors.full_messages, status: 500

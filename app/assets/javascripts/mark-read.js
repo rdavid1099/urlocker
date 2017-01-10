@@ -5,11 +5,12 @@ $(document).ready(function(){
   $('#links-list').on('click', 'button.mark-read', function(){
     var $this = $(this);
     var linkId = $this.parents('.link').data('id');
+    var readStatus = ($this.text() === 'Mark as Unread')
 
     $.ajax({
       url: '/api/v1/links/' + linkId,
       method: 'PATCH',
-      data: {read: true}
+      data: {read: readStatus}
     })
     .then(updateLinkView(this))
   })
