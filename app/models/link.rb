@@ -1,5 +1,6 @@
 class Link < ApplicationRecord
   belongs_to :user
+  has_many :reads
 
   scope :hot, -> {
     select('links.url as url')

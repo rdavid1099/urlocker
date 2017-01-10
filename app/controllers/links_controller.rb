@@ -22,6 +22,8 @@ class LinksController < ApplicationController
 
   def destroy
     link = Link.find(params[:id])
+    reads = link.reads
+    reads.destroy_all
     link.destroy
     flash[:success] = 'Link Successfully Deleted'
     redirect_to root_path
