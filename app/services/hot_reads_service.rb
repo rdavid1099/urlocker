@@ -4,6 +4,11 @@ class HotReadsService
     conn.post '/api/v1/reader', {url: link.url, title: link.title}
   end
 
+  def self.get_top_ten
+    response = conn.get '/api/v1/reader'
+    JSON.parse(response.body)
+  end
+
   private
     def self.conn
       url = (ENV['RAILS_ENV'] == 'production' ? 'https://hot-reader.herokuapp.com' : 'http://127.0.0.1:2000')

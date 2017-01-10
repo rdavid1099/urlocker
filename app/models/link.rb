@@ -23,4 +23,18 @@ class Link < ApplicationRecord
       return 'clicked'
     end
   end
+
+  def hot?(hot_reads)
+    hot_reads.each do |read|
+      return true if url == read['url']
+    end
+    false
+  end
+
+  def top?(hot_reads)
+    hot_reads.each_with_index do |read, n|
+      return true if url == read['url'] && n.zero?
+    end
+    false
+  end
 end
