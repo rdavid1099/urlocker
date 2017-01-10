@@ -11,7 +11,7 @@ class Api::V1::LinksController < ApplicationController
 
   def update
     @link = Link.find(params[:id])
-    read = params[:read] == 'true' ? true : false
+    read = @link.read ? false : true
     if @link.update(read: read)
       HotReadsService.record_read(@link) if @link.read
       head :no_content
