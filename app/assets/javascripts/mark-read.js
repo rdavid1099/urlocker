@@ -5,6 +5,7 @@ $(document).ready(function(){
   $('#links-list').on('click', 'button.mark-read', function(){
     var $this = $(this);
     var linkId = $this.parents('.link').data('id');
+    $this.parents('.link').toggleClass('clicked')
 
     $.ajax({
       url: '/api/v1/links/' + linkId,

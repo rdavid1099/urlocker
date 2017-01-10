@@ -17,4 +17,10 @@ class Link < ApplicationRecord
       self.errors[:url] << 'Invalid URL. Please enter a valid web address.'
     end
   end
+
+  def read?
+    if read
+      return 'clicked'
+    end
+  end
 end
