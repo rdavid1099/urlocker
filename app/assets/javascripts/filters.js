@@ -11,7 +11,7 @@ $(document).ready(function(){
   })
 
   $searchText = $("#filter-search-text");
-  $("#filter-search").on('submit', searchText);
+  $("#filter-search").on('keyup', searchText);
 
 
   function showLinks (filter) {
@@ -48,7 +48,7 @@ $(document).ready(function(){
       success: function (data) {
         clearLinksList()
         $.each(data, function (index, link) {
-          if (link.title.includes($searchText.val())) {
+          if (link.title.includes($searchText.val()) || link.url.includes($searchText.val())) {
             if (link.read) {
             renderReadLink(link)
             } else {
