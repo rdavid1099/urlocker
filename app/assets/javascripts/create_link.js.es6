@@ -45,6 +45,8 @@ function linkHTML(link) {
                 <a href='/links/${link.id}/edit'><button class='edit-link'>Edit</button></a>
                 <a data-confirm='Are you sure you want to delete this link?' data-method='delete' href='/links/${link.id}'><button class='delete-link'>Delete</button></a>
               </p>
+              <strong><p class='badges'>
+              </p></strong>
             </div>`
 }
 

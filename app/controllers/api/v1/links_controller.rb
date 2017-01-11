@@ -24,6 +24,11 @@ class Api::V1::LinksController < ApplicationController
     end
   end
 
+  def top
+    @hot_reads = HotReadsService.get_top_ten
+    render json: @hot_reads
+  end
+
   private
 
   def link_params
