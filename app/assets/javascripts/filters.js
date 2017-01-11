@@ -38,8 +38,6 @@ $(document).ready(function(){
   }
 
   function searchText (event) {
-    event.preventDefault();
-
     $.ajax({
       type: 'GET',
       url: '/api/v1/links',
